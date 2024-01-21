@@ -24,6 +24,7 @@ Feel free to explore, learn, and contribute to this repository. If you find any 
 
 1. [Recursion](/recursion)
 2. [Hashing](/hashing)
+3. [Sorting](/sorting/)
 
 
 <!-- Add more topics here -->
