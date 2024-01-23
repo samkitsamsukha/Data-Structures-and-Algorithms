@@ -22,9 +22,10 @@ Feel free to explore, learn, and contribute to this repository. If you find any 
 
 ## Topics
 
-1. [Recursion](/recursion)
-2. [Hashing](/hashing)
-3. [Sorting](/sorting/)
+1. [Recursion](/Recursion/)
+2. [Hashing](/Hashing/)
+3. [Sorting](/Sorting/)
+4. [Arrays](/Arrays/)
 
 
 <!-- Add more topics here -->
