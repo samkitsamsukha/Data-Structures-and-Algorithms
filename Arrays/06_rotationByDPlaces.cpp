@@ -1,8 +1,15 @@
 // Rotation of an array by D places, towards the left.
 
+#include<bits/stdc++.h>
 #include<iostream>
 #include<vector>
 using namespace std;
+
+void leftRotate(int arr[], int n, int d){
+    reverse(arr, arr+d); //Reverse first half
+    reverse(arr+d, arr+n); //Reverse second half
+    reverse(arr, arr+n); //Reverse full array
+}
 
 int main(){
     int n;
@@ -12,14 +19,14 @@ int main(){
     for(int i=0; i<n; i++){
         cin >> arr[i];
     }
-    
-    // BRUTE FORCE
-
-    /*
     int d;
     cout << "Enter the number of places the array has to be shifted.";
     cin >> d;
     d = d%n;
+    
+    // BRUTE FORCE
+
+    /*
     vector<int> temp;
     for(int i=0; i<d; i++){
         temp.push_back(arr[i]);
@@ -31,7 +38,10 @@ int main(){
         arr[i] = temp[i-(n-d)];
     }
     */
-    
+
+   // OPTIMAL
+    leftRotate(arr, n, d);
+
     cout << "Array after left shifting by one place is:" << endl;
     for(int i=0; i<n; i++){
         cout << arr[i] << " ";
