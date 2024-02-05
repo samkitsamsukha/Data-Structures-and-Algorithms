@@ -1,7 +1,7 @@
 //Sorting an Array using Selection Sort
 /*
     Note on Time Complexity:-
-    - O(N) in all cases: Best, Average, Worst
+    - O(N^2) in all cases: Best, Average, Worst
 */
 
 #include<iostream>

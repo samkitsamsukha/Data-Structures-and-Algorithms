@@ -1,5 +1,7 @@
 // Merge Sort - Divide and Merge
 
+// TC : O(N x log2(N)))
+
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -44,7 +46,7 @@ void merge(int arr[], int low, int mid, int high)
 
 void mergeSort(int arr[], int low, int high)
 {
-    if (low == high)
+    if (low >= high)
     {
         return;
     }
