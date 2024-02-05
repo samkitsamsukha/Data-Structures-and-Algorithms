@@ -62,13 +62,15 @@ int optimal(vector<int> arr, long long k){
     while(right < n){
         while(sum > k && left <= right){
             sum = sum - arr[left];
-            left--;
+            left++;
         }
         if(sum == k){
             maxLen = max(maxLen, right - left + 1);
         }
         right++;
-        sum = sum + arr[right];
+        if(right<n){
+            sum = sum + arr[right];
+        }
     }
     return maxLen;
 }
@@ -77,8 +79,8 @@ int main(){
     vector<int> arr = {1, 2, 3, 1, 1, 1, 3, 4, 2, 3};
     long long k = 6;
     // int ans = brute(arr, k);
-    int ans = better(arr, k);
-    // int ans = brute(arr, k);
+    // int ans = better(arr, k);
+    int ans = optimal(arr, k);
     cout << ans << endl;
     return 0;
 }
