@@ -1,5 +1,10 @@
 //Remove duplicate elements from an array which is sorted and print number of unqiue elements present
 
+/*
+    TC : O(N)
+    SC : O(1)
+*/
+
 #include<iostream>
 using namespace std;
 

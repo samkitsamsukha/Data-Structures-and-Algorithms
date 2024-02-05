@@ -37,6 +37,10 @@ int main(){
     /*
         int visited[n2] = {0};
         // BRUTE FORCE Solution
+
+            TC : O(n1 x n2)
+            SC : O(N2)
+
         for(int i=0; i<n1; i++){
             for(int j=0; j<n2; j++){
                 if(a[i] == b[j] && visited[j] == 0){

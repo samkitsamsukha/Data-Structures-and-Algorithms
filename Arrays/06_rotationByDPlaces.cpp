@@ -23,10 +23,12 @@ int main(){
     cout << "Enter the number of places the array has to be shifted.";
     cin >> d;
     d = d%n;
-    
-    // BRUTE FORCE
-
     /*
+
+    BRUTE FORCE
+        TC : O(N+d)
+        SC : O(d)
+
     vector<int> temp;
     for(int i=0; i<d; i++){
         temp.push_back(arr[i]);
@@ -39,7 +41,12 @@ int main(){
     }
     */
 
-   // OPTIMAL
+    /*
+    OPTIMAL
+        TC : O(2N)
+        SC : O(1)
+    */
+
     leftRotate(arr, n, d);
 
     cout << "Array after left shifting by one place is:" << endl;
