@@ -2,6 +2,13 @@
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
         "vector": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "initializer_list": "cpp",
+        "list": "cpp",
+        "utility": "cpp",
+        "xhash": "cpp",
+        "xstring": "cpp",
+        "xtree": "cpp",
+        "xutility": "cpp"
     }
 }
