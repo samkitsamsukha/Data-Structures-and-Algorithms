@@ -1,16 +1,18 @@
 # Data Structures and Algorithms
 
-<!-- ![GitHub](https://img.shields.io/github/license/samkitsamsukha/Data-Structures-and-Algorithms)
 ![GitHub last commit](https://img.shields.io/github/last-commit/samkitsamsukha/Data-Structures-and-Algorithms)
-![GitHub repo size](https://img.shields.io/github/repo-size/samkitsamsukha/Data-Structures-and-Algorithms) -->
+![GitHub repo size](https://img.shields.io/github/repo-size/samkitsamsukha/Data-Structures-and-Algorithms)
 
 Welcome to the "Data Structures and Algorithms" repository! This repository contains implementations and explanations of various data structures and algorithms to help you sharpen your coding skills.
 
 ## Table of Contents
 
-- [About](#about)
-- [Topics](#topics)
-- [Getting Started](#getting-started)
+- [Data Structures and Algorithms](#data-structures-and-algorithms)
+  - [Table of Contents](#table-of-contents)
+  - [About](#about)
+    - [Language used - C++](#language-used---c)
+  - [Topics](#topics)
+  - [Getting Started](#getting-started)
 
 
 ## About
