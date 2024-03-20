@@ -15,7 +15,7 @@ using namespace std;
 vector<int> optimal(vector<int> nums){
     int c1 = 0; 
     int c2 = 0;
-    int e1, e2;
+    int e1 = INT_MIN, e2 = INT_MIN;
     for(int i = 0 ; i<nums.size(); i++){
         if(c1 == 0 && nums[i] != e2){
             c1 = 1;
@@ -36,11 +36,33 @@ vector<int> optimal(vector<int> nums){
             c2--;
         }
     }
-    return {e1, e2};
+    //Manual checking of frequency
+    c1 = 0;
+    c2 = 0;
+    for(int i = 0 ; i<nums.size(); i++){
+        if(nums[i] == e1){
+            c1++;
+        }
+        if(nums[i] == e2){
+            c2++;
+        }
+    }
+    // return only if greater than n/3
+    vector<int> result;
+    int mini = (int)nums.size()/3 + 1;
+    if(c1 >= mini){
+        result.push_back(e1);
+    }
+    if(c2 >= mini){
+        result.push_back(e2);
+    }
+    return result;
 }
 int main(){
-    vector<int> nums = {1, 1, 1, 3, 3, 2, 2, 2};
+    vector<int> nums = {4};
     vector<int> ans = optimal(nums);
-    cout << ans[0] << ", " << ans[1];
+    for(int i = 0; i < ans.size(); i++){
+        cout << ans[i] << " ";
+    }
     return 0;
 }
