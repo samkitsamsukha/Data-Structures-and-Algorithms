@@ -19,9 +19,25 @@ int main(){
     }
 
     //BUBBLE SORT
-    for(int i=n-1; i>=1; i--){
+
+    // for(int i=n-1; i>=1; i--){
+    //     int didswap = 0; //to reduce time complexity
+    //     for(int j=0; j<i;j++){
+    //         if(arr[j] > arr[j+1]){
+    //             int temp = arr[j];
+    //             arr[j] = arr[j+1];
+    //             arr[j+1] = temp;
+    //             didswap = 1;
+    //         }
+    //     }
+    //     if(didswap==0){
+    //         break;
+    //     }
+    // }
+
+    for(int i=0; i<n; i++){
         int didswap = 0; //to reduce time complexity
-        for(int j=0; j<i;j++){
+        for(int j=0; j<n-i-1;j++){
             if(arr[j] > arr[j+1]){
                 int temp = arr[j];
                 arr[j] = arr[j+1];
