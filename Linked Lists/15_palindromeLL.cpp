@@ -36,6 +36,23 @@ void display(Node* head){
     return;
 }
 
+bool brute(Node* head){
+    Node* temp = head;
+    stack<int> st;
+    while(temp != nullptr){
+        st.push(temp->data);
+    }
+    temp = head;
+    while(temp != nullptr){
+        if(temp->data != st.top()){
+            return false;
+        }
+        st.pop();
+        temp = temp->next;
+    }
+    return true;
+}
+
 Node* reverse(Node* head){
     Node* temp = head;
     Node* prev = nullptr;

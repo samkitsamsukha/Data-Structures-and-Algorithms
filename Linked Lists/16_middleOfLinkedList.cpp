@@ -36,20 +36,25 @@ void display(Node* head){
     return;
 }
 
-Node* brute(Node* head){
+void brute(Node* head){
+    int l = 0;
     Node* temp = head;
-    stack<int> st;
     while(temp != nullptr){
-        st.push(temp->data);
+        l++;
         temp = temp->next;
     }
+    cout << "Length of Linked List: " << l << endl;
     temp = head;
+    int c = 0;
     while(temp != nullptr){
-        temp->data = st.top();
-        st.pop();
+        c++;
+        if(c == (l/2)+1){
+            cout << "The middle node is " << temp->data << endl;
+            return;
+        }
         temp = temp->next;
     }
-    return head;
+    return;
 }
 
 void optimal(Node* head){
@@ -65,6 +70,7 @@ void optimal(Node* head){
 int main(){
     vector<int> nums = {1, 2, 3, 4, 5, 6};
     Node* head = convertToLL(nums);
-    optimal(head);
+    brute(head);
+    // optimal(head);
     return 0;
 }
