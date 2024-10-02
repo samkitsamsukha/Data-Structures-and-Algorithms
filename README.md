@@ -28,9 +28,9 @@ Feel free to explore, learn, and contribute to this repository. If you find any 
 2. [Hashing](/Hashing/)
 3. [Sorting](/Sorting/)
 4. [Arrays](/Arrays/)
-
-
-<!-- Add more topics here -->
+5. [Linked Lists](/Linked%20Lists/)
+6. [Stack](/Stack/)
+7. [Queue](/Queue/)
 
 ## Getting Started
 
