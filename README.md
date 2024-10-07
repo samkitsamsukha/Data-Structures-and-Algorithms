@@ -14,12 +14,12 @@ Welcome to the "Data Structures and Algorithms" repository! This repository cont
   - [Topics](#topics)
   - [Getting Started](#getting-started)
 
-
 ## About
 
 This repository is created to serve as a resource for learning and practicing data structures and algorithms. Each topic is organized in its own directory, containing code implementations, explanations, and relevant resources.
 
 Feel free to explore, learn, and contribute to this repository. If you find any issues or have suggestions for improvement, please open an issue or submit a pull request.
+
 ### Language used - C++
 
 ## Topics
@@ -38,3 +38,4 @@ To get started with this repository, clone it to your local machine using the fo
 
 ```bash
 git clone https://github.com/samkitsamsukha/Data-Structures-and-Algorithms.git
+```
