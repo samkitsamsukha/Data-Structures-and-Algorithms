@@ -91,12 +91,12 @@ Node* reverseK(Node* head, int k){
 }
 
 int main(){
-    vector<int> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    vector<int> nums = {1, 2, 3, 4, 5};
     Node* head = convertToLL(nums);
     cout << "Original List: ";
     display(head);
-    head = reverseK(head, 3);
-    cout << "Reversed in groups of 3: ";
+    head = reverseK(head, 2);
+    cout << "Reversed in groups of 2: ";
     display(head);
     return 0;
 }
