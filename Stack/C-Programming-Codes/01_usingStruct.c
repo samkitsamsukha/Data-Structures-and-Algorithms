@@ -1,19 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h> // for malloc()
 
-struct Stack {
+typedef struct STACK {
     int top;
     int* st;
-};
+} STACK;
 
 // Function to initialize the stack
-void initStack(struct Stack* stack, int size) {
+void initStack(struct STACK* stack, int size) {
     stack->top = -1;
     stack->st = (int*)malloc(size * sizeof(int)); // Allocate memory for the stack
 }
 
 // Function to push an element onto the stack
-void push(struct Stack* stack, int x, int size) {
+void push(struct STACK* stack, int x, int size) {
     if (stack->top == size - 1) {
         printf("Stack Overflow\n");
         return;
@@ -24,7 +24,7 @@ void push(struct Stack* stack, int x, int size) {
 }
 
 // Function to pop an element from the stack
-int pop(struct Stack* stack) {
+int pop(struct STACK* stack) {
     if (stack->top == -1) {
         printf("Stack is empty\n");
         return -1;
@@ -34,12 +34,12 @@ int pop(struct Stack* stack) {
 }
 
 // Function to check if the stack is empty
-int isEmpty(struct Stack* stack) {
+int isEmpty(struct STACK* stack) {
     return stack->top == -1;
 }
 
 // Function to get the top element of the stack
-int peek(struct Stack* stack) {
+int peek(struct STACK* stack) {
     if (stack->top == -1) {
         printf("Stack is empty\n");
         return -1;
@@ -52,7 +52,7 @@ int main() {
     int n;
     scanf("%d", &n);
 
-    struct Stack st;
+    STACK st;
     initStack(&st, n); // Initialize the stack
 
     // Example usage
