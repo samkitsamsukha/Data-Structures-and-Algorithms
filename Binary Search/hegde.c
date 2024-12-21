@@ -1,1 +1,0 @@
-Sathvik love Smruthi
