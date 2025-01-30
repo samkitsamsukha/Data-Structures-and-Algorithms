@@ -11,7 +11,8 @@
         "xtree": "cpp",
         "xutility": "cpp",
         "ostream": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "iostream": "cpp"
     },
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#1d1b42",
