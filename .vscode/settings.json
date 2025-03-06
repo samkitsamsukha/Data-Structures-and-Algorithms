@@ -12,7 +12,8 @@
         "xutility": "cpp",
         "ostream": "cpp",
         "format": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "xiosbase": "cpp"
     },
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#1d1b42",
