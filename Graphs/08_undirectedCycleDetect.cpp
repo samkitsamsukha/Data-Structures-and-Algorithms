@@ -33,6 +33,6 @@ int main(){
         {5, 6}
     };
     if(detect(adj, 0)) cout << "Cycle Exists" << endl;
-    else cout << "Cycel Does Not Exist" << endl;
+    else cout << "Cycle Does Not Exist" << endl;
     return 0;
 }
