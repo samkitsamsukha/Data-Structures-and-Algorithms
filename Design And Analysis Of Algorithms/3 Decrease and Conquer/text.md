@@ -272,7 +272,316 @@ Example
 7. `1` `2` `3` `4` `5` `6` 7
 8. Survivor - `7`
 
+#### If n is even, `n = 2k`
+then `J(2k) = 2J(k)-1`
+Base case: `J(1) = 1`
+Let's take n = 8, so k = 4
+Here, `J(8) = 2J(4)-1`
+`J(8) = 2[2J(2)-1]-1`
+`J(8) = 4J(2)-3`
+`J(8) = 4[2J(1)-1]-3`
+`J(8) = 8J(1)-7`
+`J(8) = 8-7 = 1`
 
-### Fake Coin Problem
+#### If n is odd, `n=2k+1`
+then `J(2k+1) = 2J(k)+1`
+Base case: `J(1) = 1`
+Let's take n = 7, so k = 3
+then, `J(7) = 2J(3)+1`
+`J(7) = 2[2J(1)+1]+1`
+`J(7) = 4J(1)+3`
+`J(7) = 4+3 = 7`
 
-### Selection Problem & Interpolation Searching
+---
+
+### 🪙 Fake Coin Problem 
+Given `n` coins where one is **fake** and **weighs less**, identify the fake coin using a minimum number of weighings. The only allowed operation is comparing two equal-sized groups of coins using a weighing scale.
+
+#### Strategy
+1. Divide `n` coins into two equal halves.
+2. If `n` is odd, set aside one coin temporarily.
+3. Weigh both halves.
+   * If both weigh the same, the set-aside coin is fake.
+   * Else, the lighter half contains the fake coin.
+4. Repeat the process recursively with the lighter group.
+
+#### Recurrence Relation
+
+Let `w(n)` be the number of weighings required.
+
+* Base Case: `w(1) = 0` (No weighing needed when only one coin is left).
+* Recursive Case: `w(n) = w(n/2) + 1`
+
+This recurrence captures the fact that in each weighing, we halve the problem size and do **one** weighing.
+
+#### Solving Using Master’s Theorem
+
+Master’s Theorem for divide and conquer recurrences:
+```
+T(n) = aT(n/b) + f(n)
+```
+In our case:
+* `a = 1` (only one recursive call)
+* `b = 2` (problem size divided by 2)
+* `f(n) = 1` (constant time for weighing)
+Now we compare `f(n)` to `n^log_b(a)`:
+* `log_b(a) = log₂(1) = 0`
+* So, `n^log_b(a) = n⁰ = 1`
+
+Since `f(n) = Θ(1)`, this matches **Case 2** of Master’s Theorem:
+
+> If f(n) = Θ(n^log\_b(a) \* log^k n), then
+> T(n) = Θ(n^log\_b(a) \* log^(k+1) n)
+
+In our case, `k = 0`, so:
+
+```
+T(n) = Θ(log n)
+```
+
+**Time Complexity: Θ(log n)**
+
+#### Example: n = 9 Coins
+
+Let's step through finding the fake coin among `n = 9` coins:
+
+##### Step 1:
+
+* Divide into: 4 coins vs 4 coins, and set aside 1 coin.
+* Weigh the two groups of 4:
+
+  * If equal → fake coin is the one set aside.
+  * If unequal → fake is in lighter group of 4.
+
+##### Step 2:
+
+* Take 4 coins → divide into 2 vs 2.
+* Weigh the two:
+
+  * Equal → fake is among the remaining 1 or 0.
+  * Unequal → take the lighter 2.
+
+##### Step 3:
+
+* 2 coins → weigh 1 vs 1.
+
+  * Lighter one is fake.
+
+##### Total Weighings: 3 → `log₂(9) ≈ 3.17`
+
+---
+
+Here's a complete `.md` file content for the **Selection Problem** with a full dry run of computing the **median** using partition logic:
+
+---
+
+### Selection Problem – Finding the kth Smallest Element (Median)
+
+Given a set of `n` elements, we want to find the **kth smallest element**. If `k = ceil(n/2)`, it gives the **median**.
+
+We use the **partition-based selection algorithm** (similar to QuickSelect):
+
+* Choose a pivot element.
+* Partition the array around the pivot.
+* Let `s` be the position of the pivot after partitioning.
+
+  * If `s == k`, the pivot is the median.
+  * If `s < k`, recursively search in the right half.
+  * If `s > k`, recursively search in the left half.
+
+#### Example: Compute Median of
+
+**Array**: `4 1 10 9 7 12 8 2 15`
+**n = 9** → `k = ceil(9 / 2) = 5`
+Goal: Find the **5th smallest element**
+
+#### Step 1: Initial Partition
+
+* **Pivot** = 4 (first element)
+* **i = 1** → points to 1
+* **j = 15** → points to 15
+
+##### Partition Logic:
+
+Repeat:
+* if `A[i] <= pivot`, `i++`
+* if `A[j] > pivot`, `j--`
+* if `i < j`, `swap(A[i], A[j])`
+* if `i >= j`, `swap(A[low], A[j])` to place pivot correctly
+
+##### Initial State:
+
+```
+[4, 1, 10, 9, 7, 12, 8, 2, 15]
+ l           i                j
+```
+
+#### Dry Run:
+
+**Iteration 1:**
+
+* A\[i] = 1 ≤ 4 → i++
+
+```
+i = 2
+```
+
+* A\[j] = 15 > 4 → j--
+
+```
+j = 7
+```
+
+* A\[j] = 2 ≤ 4, A\[i] = 10 > 4 → swap(A\[i], A\[j])
+
+```
+Swap 10 and 2 → [4, 1, 2, 9, 7, 12, 8, 10, 15]
+                l     i             j
+```
+
+```
+i = 3, j = 6
+```
+
+**Iteration 2:**
+
+* A\[i] = 9 > 4 → stay
+* A\[j] = 8 > 4 → j--
+
+```
+j = 5 → A[j] = 12 > 4 → j--
+j = 4 → A[j] = 7 > 4 → j--
+j = 3 → A[j] = 9 > 4 → j--
+j = 2 → A[j] = 2 ≤ 4
+```
+
+Now, i = 3, j = 2 → i ≥ j
+Partition step ends.
+
+#### Swap pivot with A\[j]
+
+```
+Swap 4 with 2 → [2, 1, 4, 9, 7, 12, 8, 10, 15]
+               ^        j
+```
+
+* Pivot placed at index `j = 2` (0-based) ⇒ s = 3 (1-based)
+
+#### Check:
+
+* s = 3 < 5 → Search in **right half** (indices 3 to 8)
+
+#### Step 2: Partition Right Half
+
+Subarray: `[9, 7, 12, 8, 10, 15]`
+New pivot = 9 (first element of subarray)
+Set i = 4, j = 8
+
+#### Dry Run 2:
+
+**Iteration 1:**
+
+* A\[i] = 7 ≤ 9 → i++
+
+```
+i = 5
+```
+
+* A\[j] = 15 > 9 → j--
+
+```
+j = 7 → A[j] = 10 > 9 → j--
+j = 6 → A[j] = 8 ≤ 9
+
+Swap A[i], A[j] → swap 12 and 8  
+[2, 1, 4, 9, 7, 8, 12, 10, 15]
+              l     i    j
+```
+
+```
+i = 6, j = 5
+```
+
+* i ≥ j → swap pivot with A\[j] = 8
+
+---
+
+#### Swap Pivot with A\[j]
+
+```
+Swap 9 with 8 → [2, 1, 4, 8, 7, 9, 12, 10, 15]
+                   ^     j
+```
+
+* Pivot placed at index 5 (0-based) ⇒ s = 6 (1-based in full array)
+
+#### Check:
+
+* s = 6 > 5 → Search in **left half** of this subarray (indices 3 to 4)
+
+#### Step 3: Partition `[8, 7]`
+
+Pivot = 8, i = 4, j = 4
+
+* A\[j] = 7 ≤ 8 → no movement
+* i = j → swap A\[3] and A\[4]
+
+```
+Swap 8 and 7 → [2, 1, 4, 7, 8, 9, 12, 10, 15]
+```
+
+Pivot placed at index 3 ⇒ s = 4 (1-based)
+
+#### Step 4:
+
+s = 4 < 5 → Search in index 4 (value = 8)
+
+Now only one element → 8 is the **5th smallest**!
+
+##### Final Answer:
+
+**Median = 8**
+
+#### Time Complexity
+
+Let `c(n)` be total number of comparison.
+Recurrence Relation: `c(n) = c(n/2)+(n+1)`
+
+Applying Masters Theorem a = 1, b = 2, f(n) = O(n)
+Find `n^(log_b(a)) = n^0 = 1`
+Here `f(n)>n^(log_b(a))` therefore we apply case 3
+**c(n) = Θ(f(n))= Θ(n)**
+
+Let us also consider worst case scenario, 1 2 3 4 5 6 7 8
+here the recurrence relation becomes `c(n) = c(n-1) + 1`, which becomes `Θ(n^2)`
+
+### Interpolation Search
+
+It is just an improvement over Binary Search
+
+Input Constraint
+- The elements of array should be sorted
+- Array elements should be **uniformly distributed**
+
+Which means we can have
+- 10 20 30 40 50
+- 2 4 6 8 10 12
+- 5 20 35 50 65
+and so on
+
+Consider Array: `2 4 6 8 10 12 14 16`
+We have the following variables
+- `l=1`
+- `r=8`
+- `A[l] = 2`
+- `A[r] = 16`
+- To find `v=10`
+- Calculate $x = l + \left\lfloor \frac{(v - A[l]) \cdot (r - l)}{A[r] - A[l]} \right\rfloor$
+- `x = 1 + floor((10-2).(8-1)/(16-2))`
+- `x = 1 + floor(8x7/14)`
+- `x = 1 + floor(8/2)`
+- `x = 1 + 4`
+- `x = 5`
+- compare A[5] with v and we get 10 = 10 hence search successful
+
+Efficiency - `log_2(log_2(n))+1`
