@@ -13,7 +13,9 @@
         "ostream": "cpp",
         "format": "cpp",
         "iostream": "cpp",
-        "xiosbase": "cpp"
+        "xiosbase": "cpp",
+        "deque": "cpp",
+        "queue": "cpp"
     },
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#1d1b42",

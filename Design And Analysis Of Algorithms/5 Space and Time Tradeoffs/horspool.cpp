@@ -7,7 +7,7 @@ int main(){
     string p = "STUDENT";
     vector<int> shift(26, p.length());
     int x = 1;
-    for(int i = 0; i<p.size()-1; i++){
+    for(int i = 0; i<p.size()-2; i++){
         shift[p[i]-'A'] = p.size()-1-i;
     }
     int pos = 0;

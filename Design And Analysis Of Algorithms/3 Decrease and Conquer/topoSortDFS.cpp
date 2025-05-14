@@ -3,13 +3,13 @@
 #include<utility>
 using namespace std;
 
-int count = 0;
+int viscount = 0;
 int popcount = 0;
 vector<int> topo;
 
 void dfs(int i, vector<vector<int>> adj, vector<pair<int, int>>& vis){
-    count++;
-    vis[i].first = count;
+    viscount++;
+    vis[i].first = viscount;
     for(int j = 0; j<adj[i].size(); j++){
         if(vis[adj[i][j]].first == 0){
             dfs(adj[i][j], adj, vis);

@@ -2,11 +2,11 @@
 #include<vector>
 using namespace std;
 
-int count = 0;
+int visitCount = 0;
 
 void dfs(int i, vector<vector<int>>& adj, vector<int>& vis){
-    count++;
-    vis[i] = count;
+    visitCount++;
+    vis[i] = visitCount;
     for(int j = 0; j<adj[i].size(); j++){
         if(vis[adj[i][j]] == 0){
             dfs(adj[i][j], adj, vis);
@@ -34,3 +34,4 @@ int main(){
         cout << "Vertex " << i << " visisted at order " << vis[i] << endl;
     }
 }
+
