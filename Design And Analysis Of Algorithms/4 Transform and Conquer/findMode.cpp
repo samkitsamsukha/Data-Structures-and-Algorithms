@@ -49,25 +49,24 @@ void mergeSort(vector<int>& arr, int low, int high)
 }
 
 int main(){
-    vector<int> a = {1, 2, 4, 5, 4, 5, 4, 5, 5, 5, 4, 7, 10, 12};
-    mergeSort(a, 0, a.size()-1);
-    int i = 0;
-    int mode = 0;
+    vector<int> a = {1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 6, 7};
     int runLength = 0;
     int runValue = 0;
+    int modeValue = 0;
     int modeFreq = 0;
-    while(i<a.size()-1){
-        runLength = 1;
+    for(int i = 0; i<a.size(); i++){
         runValue = a[i];
-        while(i+runLength<=a.size()-1 && a[i+runLength] == runValue){
+        runLength = 0;
+        while(a[i]==runValue){
+            i++;
             runLength++;
         }
-        if(runLength>modeFreq){
+        if(runLength > modeFreq){
             modeFreq = runLength;
-            mode = runValue;
+            modeValue = runValue;
         }
-        i = i+runLength;
+        i--;
     }
-    cout << "Mode is " << mode << endl;
+    cout << "Mode is " << modeValue << endl;
     return 0;
 }
