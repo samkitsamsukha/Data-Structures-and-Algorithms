@@ -16,6 +16,25 @@ bool dfs(int i, int colour, vector<int>& vis, vector<vector<int>> adj){
     return true;
 }
 
+bool bfs(int i, int colour, vector<int>&vis, vector<vector<int>> adj){
+    queue<int> q;
+    vis[i] = colour;
+    q.push(i);
+    while(!q.empty()){
+        int f = q.front();
+        q.pop();
+        for(auto n:adj[f]){
+            if(vis[n]==-1){
+                vis[n] = !vis[f];
+            }
+            else if(vis[n]==vis[f]){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 int main(){
     vector<vector<int>> adj = {
         {1},
