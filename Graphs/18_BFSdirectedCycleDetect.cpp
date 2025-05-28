@@ -3,12 +3,12 @@ using namespace std;
 
 int main(){
     vector<vector<int>> adj = {
-        {},       // 0
-        {},       // 1
+        {5},       // 0
+        {4},       // 1
         {3},      // 2 -> 3
         {1},      // 3 -> 1
-        {0, 1},   // 4 -> 0, 1
-        {0, 2}    // 5 -> 0, 2
+        {0},   // 4 -> 0, 1
+        {2}    // 5 -> 0, 2
     };
     vector<int> in(adj.size(), 0);
     vector<int> vis(adj.size(), 0);
@@ -17,9 +17,6 @@ int main(){
         for(auto u:v){
             in[u]++;
         }
-    }
-    for(int i = 0; i<in.size(); i++){
-        cout << i << in[i] << endl;
     }
     for(int i = 0; i<in.size(); i++){
         if(in[i] == 0){

@@ -19,9 +19,6 @@ int main(){
         }
     }
     for(int i = 0; i<in.size(); i++){
-        cout << i << in[i] << endl;
-    }
-    for(int i = 0; i<in.size(); i++){
         if(in[i] == 0){
             q.push(i);
         }
