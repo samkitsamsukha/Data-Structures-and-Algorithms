@@ -22,6 +22,38 @@ bool dfs(int i, vector<int>& vis, vector<vector<int>> adj, vector<int>& path, ve
     return false;
 }
 
+void bfs(int i, vector<vector<int>> adj, vector<int>& check){
+    vector<vector<int>> r(adj.size());
+    for(int i = 0; i<adj.size(); i++){
+        for(int j = 0; j<adj[i].size(); j++){
+            r[adj[i][j]].push_back(i);
+        }
+    }
+    vector<int> in(adj.size(), 0);
+    for(auto v:r){
+        for(auto u:v){
+            in[u]++;
+        }
+    }
+    queue<int> q;
+    for(int i = 0; i<in.size(); i++){
+        if(in[i] == 0){
+            q.push(i);
+        }
+    }
+    while(!q.empty()){
+        int p = q.front();
+        q.pop();
+        check[p] = 1;
+        for(auto it:r[p]){
+            in[it]--;
+            if(in[it] == 0){
+                q.push(it);
+            }
+        }
+    }
+}
+
 int main(){
     vector<vector<int>> adj = {
         {1, 2},
@@ -36,8 +68,11 @@ int main(){
     vector<int> vis(adj.size(), 0);
     vector<int> path(adj.size(), 0);
     vector<int> check(adj.size(), 0);
+    // for(int i = 0; i<adj.size(); i++){
+    //     if(!vis[i]) dfs(i, vis, adj, path, check);
+    // }
     for(int i = 0; i<adj.size(); i++){
-        if(!vis[i]) dfs(i, vis, adj, path, check);
+        if(!vis[i]) bfs(i, adj, check);
     }
     cout << "Safe Nodes: ";
     for(int i = 0; i<adj.size(); i++){

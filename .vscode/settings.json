@@ -15,7 +15,9 @@
         "iostream": "cpp",
         "xiosbase": "cpp",
         "deque": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "algorithm": "cpp",
+        "xlocale": "cpp"
     },
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#1d1b42",
