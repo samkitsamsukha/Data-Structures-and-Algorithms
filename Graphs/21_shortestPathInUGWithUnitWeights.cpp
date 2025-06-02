@@ -13,17 +13,17 @@ int main() {
         {6},
         {}
     };
-    queue<pair<int, int>> q;
-    q.push({0, 0});
+    queue<int> q;
+    q.push(0);
     vector<int> dist(adj.size(), 1e8);
     dist[0] = 0;
     while(!q.empty()){
         auto p = q.front();
         q.pop();
-        for(auto it:adj[p.first]){
-            if(dist[it]>dist[p.first]+1){
-                dist[it] = dist[p.first]+1;
-                q.push({it, dist[it]});
+        for(auto it:adj[p]){
+            if(dist[it]>dist[p]+1){
+                dist[it] = dist[p]+1;
+                q.push(it);
             }
         }
     }
