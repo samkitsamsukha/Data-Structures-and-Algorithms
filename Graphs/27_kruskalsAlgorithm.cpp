@@ -26,20 +26,16 @@ class DisjointSet {
             if(ulu == ulv) return;
             if(rank[ulu] < rank[ulv]){
                 parent[ulu] = ulv;
-                mst.push_back({u, v});
-                sum+=w;
             }
             else if(rank[ulv] < rank[ulu]){
                 parent[ulv] = ulu;
-                mst.push_back({u, v});
-                sum+=w;
             }
             else{
                 parent[ulv] = ulu;
                 rank[ulv]++;
-                mst.push_back({u, v});
-                sum+=w;
             }
+            mst.push_back({u, v});
+            sum+=w;
         }
 
         void unionBySize(int u, int v){
