@@ -67,8 +67,8 @@ int spaceOptimalSingleArray(string s1, string s2){
 }
 
 int main(){
-    string s1 = "abcde";
-    string s2 = "bcdae";
+    string s1 = "plasma";
+    string s2 = "altruism";
     int n = s1.length(), m = s2.length();
     vector<vector<int>> dp(n, vector<int>(m, -1));
     cout << "LCS via memoization: " << memoize(n-1, m-1, s1, s2, dp) << endl;

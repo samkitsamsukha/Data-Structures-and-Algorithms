@@ -2,8 +2,8 @@
 using namespace std;
 
 int main(){
-    string s1 = "aaaa";
-    string s2 = "aaaa";
+    string s1 = "brute";
+    string s2 = "groot";
     
     int n = s1.length(), m = s2.length();
     vector<vector<int>> dp(n+1, vector<int>(m+1, 0));
@@ -18,28 +18,33 @@ int main(){
         }
     }
 
-    string ans;
-    int i = n, j = m, k = dp[n][m];
-    for(int x = 0; x<k; x++){
-        ans = ans + "$";
-    }
-    k--;
+    string ans = "";
+    int i = n, j = m;
     while(i>0 && j>0){
         if(s1[i-1] == s2[j-1]){
-            ans[k] = s1[i-1];
-            k--;
+            ans+=s1[i-1];
             i--;
             j--;
         }
         else if(dp[i][j-1] > dp[i-1][j]){
+            ans+=s2[j-1];
             j--;
         }
         else{
+            ans+=s1[i-1];
             i--;
         }
     }
-    
-    cout << "Longest Common Subsequence is: " << ans << endl;
+    while(i>0){
+        ans+=s1[i-1];
+        i--;
+    }
+    while(j>0){
+        ans+=s2[j-1];
+        j--;
+    }
+    reverse(ans.begin(), ans.end());
+    cout << "Shortest Common Supersequence is: " << ans << endl;
 
     return 0;
 }
