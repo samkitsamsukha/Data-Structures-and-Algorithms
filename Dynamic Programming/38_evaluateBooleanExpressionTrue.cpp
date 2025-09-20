@@ -50,9 +50,9 @@ int memoize(int i, int j, int isTrue, string& s, vector<vector<vector<int>>>& dp
 
 int tabulate(string s){
     int n = s.length();
-    vector<vector<vector<int>>> dp(n+1, vector<vector<int>>(n+1, vector<int>(2, 0)));
-    for(int i = n; i>=0; i--){
-        for(int j = 0; j<=n; j++){
+    vector<vector<vector<int>>> dp(n, vector<vector<int>>(n, vector<int>(2, 0)));
+    for(int i = n-1; i>=0; i--){
+        for(int j = 0; j<n; j++){
             if(i>j) continue;
             for(int isTrue = 0; isTrue<=1; isTrue++){
                 if(i==j){
@@ -61,7 +61,7 @@ int tabulate(string s){
                 }
                 else{
                     int ways = 0;
-                    for(int k = i+1; k<=j-1; k++){
+                    for(int k = i+1; k<=j-1; k+=2){
                         int lt = dp[i][k-1][1];
                         int lf = dp[i][k-1][0];
                         int rt = dp[k+1][j][1];
